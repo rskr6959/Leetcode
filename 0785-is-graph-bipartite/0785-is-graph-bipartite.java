@@ -1,10 +1,6 @@
 class Solution {
     public boolean isBipartite(int[][] graph) {
-        List<List<Integer>> adjList = new ArrayList<>();
         int n = graph.length;
-        // for(int i = 0; i < n; i++){
-        //     adjList.add(new ArrayList<>());
-        // }
         boolean[] visited = new boolean[n];
         int[] parent = new int[n];
         int[] distance = new int[n];
@@ -14,14 +10,14 @@ class Solution {
         for(int v = 0; v < n; v++){
             if(!visited[v]){
                 visited[v] = true;
-                if(bfs(graph, v, adjList, visited, parent, distance) == false){
+                if(bfs(graph, v, visited, parent, distance) == false){
                 return false;
                 }
             }
         }
     return true;
     }
-    private boolean bfs(int[][] graph, int node, List<List<Integer>> adjList, boolean[] visited, int[] parent, int[] distance){
+    private boolean bfs(int[][] graph, int node, boolean[] visited, int[] parent, int[] distance){
         visited[node] = true;
         distance[node] = 0;
         Queue<Integer> q = new LinkedList<>();
